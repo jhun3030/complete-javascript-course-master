@@ -16,14 +16,14 @@ const displayNumber = function (number) {
   document.querySelector(`.number`).textContent = number;
 };
 
-const isWinInteraction = function () {
+const winInteraction = function () {
   document.querySelector(`.number`).style.transition = `500ms`;
   document.querySelector(`.number`).style.width = `30rem`;
   document.querySelector(`body`).style.transition = `500ms`;
   document.querySelector(`body`).style.backgroundColor = `#60b347`;
 };
 
-const isInProgessInteraction = function () {
+const inProgessInteraction = function () {
   document.querySelector(`body`).style.transition = `500ms`;
   document.querySelector(`body`).style.backgroundColor = `#222`;
   document.querySelector(`.number`).style.transition = `500ms`;
@@ -39,10 +39,10 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
 
     // When Player Wins
   } else if (guess === secretNumber) {
+    winInteraction();
     if (score > highScore) {
       highScore = score;
       document.querySelector(`.highscore`).textContent = highScore;
-      isWin();
     }
     displayNumber(secretNumber);
     displayMessage(`🎉 Correct Number!`);
@@ -67,5 +67,5 @@ document.querySelector(`.again`).addEventListener('click', function () {
   document.querySelector(`.score`).textContent = score;
   document.querySelector(`.guess`).value = ``;
   displayMessage(`Start Guessing...`);
-  isInProgess();
+  inProgessInteraction();
 });
